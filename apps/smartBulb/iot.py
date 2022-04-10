@@ -23,56 +23,41 @@ def index():
     return render_template('index.html')
 
 
-
-
 @bp.route('/change', methods=('GET',))
 def change():
     return render_template('change.html')
 
 
-"""
-@bp.route('/temperature', methods=('GET',))
-def get_temperature():
+@bp.route('/state', methods=('GET',))
+def get_state():
     data = {
-        'temperature': app.temperature
+        'state': app.state
     }
-
     response = app.response_class(
         response=json.dumps(data),
         mimetype='application/json; charset=utf-8'
     )
     return response
 
-
-@bp.route('/temperature', methods=('POST',))
-def set_temperature():
+@bp.route('/state', methods=('POST',))
+def set_state():
     l_password = request.args.get('password', None)
     if l_password != app.password:
         return app.response_class(
             response='wrong password',
             status=401
         )
-    temperature = request.args.get('value', None)
-    if not temperature:
+    state = request.args.get('value', None)
+    if not state:
         return app.response_class(
             response='not value',
             status=400,
             mimetype='text/plain'
         )
-    temperature = int(temperature)
-    if app.config['LOWEST'] <= temperature <= app.config['HIGHEST']:
-        app.temperature = temperature
-        data = {'temperature': temperature}
-        return app.response_class(
-            response=json.dumps(data),
-            mimetype='application/json; charset=utf-8'
-        )
-    else:
-        return app.response_class(
-            response='temperature out of bound',
-            status=400,
-            mimetype='text/plain'
-        )
+    app.state = state
+    data = {'state': state}
+    return app.response_class(
+        response=json.dumps(data),
+        mimetype='application/json; charset=utf-8'
+    )
 
-
-"""
