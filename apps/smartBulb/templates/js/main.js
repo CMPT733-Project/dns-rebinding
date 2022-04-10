@@ -29,7 +29,7 @@ function renderStatus() {
 
 function updateStatus() {
 	$.get('/password', function(data) {
-		$.post('/temperature?value=' + currentvalue + '&password=' + data.password, function(data) {
+		$.post('/state?value=' + currentvalue + '&password=' + data.password, function(data) {
 			console.debug('response from the server: ');
 			console.debug(data);
 			renderStatus();
@@ -42,7 +42,7 @@ button.addEventListener("click", updateStatus);
 
 function pollStatus() {
 	$.get('/temperature', function(data) {
-		if (!data.hasOwnProperty('temperature')) {
+		if (!data.hasOwnProperty('state')) {
 			console.error('server does not send the correct data');
 		} else {
 			let newTemperature = data.temperature;
@@ -56,7 +56,7 @@ function pollStatus() {
 	});
 }
 
-setInterval(pollStatus, 1000);
+setInterval(pollStatus, 5000);
 
 
 
