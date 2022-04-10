@@ -15,7 +15,7 @@ button.onclick = function(){
 }
 */
 
-function renderStatus() {
+function renderState() {
 	currentvalue = document.getElementById("stat").value;
 	if (currentvalue == "off"){
 	    document.getElementById("stat").value="on";
@@ -28,6 +28,7 @@ function renderStatus() {
 }
 
 function updateState() {
+	currentvalue = document.getElementById("stat").value;
 	$.get('/password', function(data) {
 		$.post('/state?value=' + currentvalue + '&password=' + data.password, function(data) {
 			console.debug('response from the server: ');
@@ -39,7 +40,7 @@ function updateState() {
 
 button.addEventListener("click", updateState);
 
-
+/*
 function pollState() {
 	$.get('/state', function(data) {
 		if (!data.hasOwnProperty('state')) {
@@ -57,7 +58,7 @@ function pollState() {
 }
 
 setInterval(pollState, 5000);
-
+*/
 
 
 
