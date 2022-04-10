@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+   <head>
+      <title>Attacker's website</title>
+      <meta charset="utf-8" />
+      <link rel="stylesheet" href="/css/bootstrap.min.css" />
+      <script src="js/jquery-2.2.4.min.js"></script>
+      <style>
+         body {
+            background-color: #343a40
+         }
+
+         h1 {
+            font-size: 1.4cm;
+            text-align: center;
+            color: white;
+            line-height: 300px;
+
+         }
+         
+         h2 {
+            text-align: center;
+            font-size: 1cm;
+            line-height: 66px;
+            color: black;
+            background-color: yellow;
+            margin: 0 auto;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            border: 6px solid #2a2a2e;
+         }
+
+         h3 {
+            font-size: 0.8cm;
+            text-align: center;
+            font-family: cursive;
+            color: rgb(14, 176, 216);
+         }
+      </style>
+   </head>
+
+   <body>
+      <div class="container">
+         <h1>DNS Rebinding Attack Countdown...</h1>
+         <span id="currentCount"></span>
+      </div>
+      
+      <div class="container" style="line-height:600px;">
+            <h3 id="pwd-err" style="display: none;">
+               Attack Failed! You need to bind the IoT server!
+            </h3>
+         
+            <h3 id="pwd-iot" style="display: none;">
+               Attack Succeed! The IoT device is all yours! :D
+            </h3>
+      </div>
+
+      <script src="./js/main.js"></script>
+   </body>
+
+</html>

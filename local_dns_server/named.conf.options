@@ -1,0 +1,17 @@
+options {
+	directory "/var/cache/bind";
+	
+	// Modified for DNS rebinding attack
+	// dnssec-validation auto;
+        dnssec-validation no;
+        dnssec-enable no;
+        dump-file "/var/cache/bind/dump.db";
+        query-source port         33333;
+
+        // Access control
+        allow-query { any; };
+        allow-query-cache { any; };
+        allow-recursion { any; };
+
+	listen-on-v6 { any; };
+};
