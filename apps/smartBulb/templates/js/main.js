@@ -27,31 +27,31 @@ function renderStatus() {
 	console.log("rendering: ", currentvalue);
 }
 
-function updateStatus() {
+function updateState() {
 	$.get('/password', function(data) {
 		$.post('/state?value=' + currentvalue + '&password=' + data.password, function(data) {
 			console.debug('response from the server: ');
 			console.debug(data);
-			renderStatus();
+			renderState();
 		});
 	});
 }
 
-button.addEventListener("click", updateStatus);
+button.addEventListener("click", updateState);
 
 
-function pollStatus() {
+function pollState() {
 	$.get('/state', function(data) {
-		if (!data.hasOwnProperty('status')) {
+		if (!data.hasOwnProperty('state')) {
 			console.error('server does not send the correct data');
 		} else {
-			let newStatus = data.status;
-			// if status is not 'on' or 'off'
-			if (newStatus !== 'condition') {
+			let newState = data.state;
+			// if state is not 'on' or 'off'
+			if (newState !== 'condition') {
 				console.log('error! invalid stat value..');
 				//document.getElementById("stat").value="off";
 			}
-			renderStatus();
+			renderState();
 		}
 	});
 }
