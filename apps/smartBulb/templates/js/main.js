@@ -41,15 +41,15 @@ button.addEventListener("click", updateStatus);
 
 
 function pollStatus() {
-	$.get('/temperature', function(data) {
-		if (!data.hasOwnProperty('state')) {
+	$.get('/state', function(data) {
+		if (!data.hasOwnProperty('status')) {
 			console.error('server does not send the correct data');
 		} else {
-			let newTemperature = data.temperature;
-			if (newTemperature !== Number(range.value)) {
-				console.log('newTemperature is [' + newTemperature + '], range.value is [' + range.value + ']');
-				console.log('set temperature to ' + newTemperature + ' as informed by the server.');
-				range.value = newTemperature;
+			let newStatus = data.status;
+			// if status is not 'on' or 'off'
+			if (newStatus !== 'condition') {
+				console.log('error! invalid stat value..');
+				//document.getElementById("stat").value="off";
 			}
 			renderStatus();
 		}
