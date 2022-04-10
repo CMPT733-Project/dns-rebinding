@@ -1,3 +1,3 @@
 class Config(object):
-    DEFAULT_STATUS = 'on'
+    DEFAULT_STATE = 'on'
     PASSWORD = 'cmpt733project'
