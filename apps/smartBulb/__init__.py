@@ -13,7 +13,7 @@ def create_app(test_config=None):
 		app.config.from_mapping(test_config)
 
 	# configure default status
-	app.status = app.config['DEFAULT_STATUS']
+	app.state = app.config['DEFAULT_STATE']
 	# configure IoT password
 	app.password = app.config['PASSWORD'] + str(r.random())
 

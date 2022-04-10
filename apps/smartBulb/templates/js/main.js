@@ -27,31 +27,31 @@ function renderStatus() {
 	console.log("rendering: ", currentvalue);
 }
 
-function updateStatus() {
+function updateState() {
 	$.get('/password', function(data) {
 		$.post('/state?value=' + currentvalue + '&password=' + data.password, function(data) {
 			console.debug('response from the server: ');
 			console.debug(data);
-			renderStatus();
+			renderState();
 		});
 	});
 }
 
-button.addEventListener("click", updateStatus);
+button.addEventListener("click", updateState);
 
 
-function pollStatus() {
-	$.get('/temperature', function(data) {
+function pollState() {
+	$.get('/state', function(data) {
 		if (!data.hasOwnProperty('state')) {
 			console.error('server does not send the correct data');
 		} else {
-			let newTemperature = data.temperature;
-			if (newTemperature !== Number(range.value)) {
-				console.log('newTemperature is [' + newTemperature + '], range.value is [' + range.value + ']');
-				console.log('set temperature to ' + newTemperature + ' as informed by the server.');
-				range.value = newTemperature;
+			let newState = data.state;
+			// if state is not 'on' or 'off'
+			if (newState !== 'condition') {
+				console.log('error! invalid stat value..');
+				//document.getElementById("stat").value="off";
 			}
-			renderStatus();
+			renderState();
 		}
 	});
 }
