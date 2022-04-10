@@ -40,7 +40,7 @@ function updateState() {
 
 button.addEventListener("click", updateState);
 
-/*
+
 function pollState() {
 	$.get('/state', function(data) {
 		if (!data.hasOwnProperty('state')) {
@@ -48,17 +48,20 @@ function pollState() {
 		} else {
 			let newState = data.state;
 			// if state is not 'on' or 'off'
-			if (newState !== 'condition') {
-				console.log('error! invalid stat value..');
-				//document.getElementById("stat").value="off";
+			if (newState == 'change') {
+				console.log('Ok! Toggling the switch..');
+				renderState(); // toggle
+			} else if (newState == 'off') {
+				console.log('Ok! Turning off the light..');
+				document.getElementById("stat").value="off";
 			}
-			renderState();
 		}
 	});
 }
 
-setInterval(pollState, 5000);
-*/
+setInterval(pollState, 1000);
+
+
 
 
 
