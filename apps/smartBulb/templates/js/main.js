@@ -56,7 +56,7 @@ function pollState() {
 	});
 }
 
-setInterval(pollStatus, 5000);
+setInterval(pollState, 5000);
 
 
 

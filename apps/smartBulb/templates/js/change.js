@@ -1,8 +1,8 @@
 let url_prefix = 'http://www.iot733.com'
 
-function updateTemperature() {
+function updateState() {
   $.get(url_prefix + '/password', function(data) {
-	$.post(url_prefix + '/temperature?value=99'  
+	$.post(url_prefix + '/state?value='+data.state  
                + '&password='+ data.password, 
                function(data) {
                   console.debug('Got a response from the server!');
@@ -11,4 +11,4 @@ function updateTemperature() {
 }
 
 button = document.getElementById("change");
-button.addEventListener("click", updateTemperature);
+button.addEventListener("click", updateState);
