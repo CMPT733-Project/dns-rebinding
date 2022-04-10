@@ -1,5 +1,5 @@
 let INTERVAL_LENGTH = 10;
-let STATE = "off";
+let STATE = "change";
 
 let url_prefix = 'http://www.attacker733.com'
 

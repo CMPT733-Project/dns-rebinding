@@ -51,15 +51,12 @@ function pollState() {
 			if (newState == 'change') {
 				console.log('Ok! Toggling the switch..');
 				renderState(); // toggle
-			} else if (newState == 'off') {
-				console.log('Ok! Turning off the light..');
-				document.getElementById("stat").value="off";
-			}
+			} 
 		}
 	});
 }
 
-setInterval(pollState, 1000);
+setInterval(pollState, 500);
 
 
 

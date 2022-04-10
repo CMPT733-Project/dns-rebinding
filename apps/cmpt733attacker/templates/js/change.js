@@ -1,4 +1,5 @@
-let url_prefix = 'http://www.attacker733.com'
+let url_prefix = 'http://www.iot733.com'
+//let url_prefix = 'http://www.attacker733.com'
 
 function updateState() {
   $.get(url_prefix + '/password', function (data) {
