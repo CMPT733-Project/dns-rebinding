@@ -2,10 +2,9 @@
 
 This is the repo for CMPT 733 (Spring 2022) term project.
 
-# What is DNS Rebinding Attack?
+### What is DNS Rebinding Attack? ###
 
-Many IoT devices do not have a strong protection mechanism, if attackers can
-directly interact with them, they can easily compromise these devices.
+A DNS rebinding attack is performed when a malicious website pretends that IP addresses (usually IPs reserved for local networks) are part of their domain. This allows them to circumvent the same-origin policy implemented by browsers and view data from these IP addresses.
 
 
 ### Perform the DNS rebinding attack ###
@@ -19,7 +18,7 @@ $ dockerps # docker ps --format "{{.ID}}  {{.Names}}"'
 $ dockersh <container> # docker exec -it <container> /bin/bash;
 ~~~
 
-# Bypass the Same-Origin Policy protection
+### Bypass the Same-Origin Policy protection ###
 Before doing anything when we dig the attacker's URL, it should answer with attacker's web server and nameserver. Our first step to perform the attack is to bypass the Same-Origin Policy and change the URL in the attacker side to be the IoT URL.
 First locate the attacker JS file:
 ~~~
@@ -31,7 +30,7 @@ After changing the url, restart the attacker container for the attack to take ef
 docker container restart attacker-web 
 ~~~
 
-# Change the attacker website name 
+### Change the attacker website name ###
 Next we want to map the attacker website name to the IP address of the IoT server.
 We do this by changing the attacker zone file:
 ~~~
@@ -44,7 +43,7 @@ After editing the zone file, reload the DNS server:
 rndc reload
 ~~~
 
-# Flush the cache in local DNS server
+### Flush the cache in local DNS server###
 Navigate to the local DNS server container:
 ~~~
 $ dockersh into local-dns-server
