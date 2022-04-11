@@ -8,17 +8,25 @@ Many IoT devices do not have a strong protection mechanism, if attackers can
 directly interact with them, they can easily compromise these devices.
 
 
-##### Perform the DNS rebinding attack #####
-In our repo folder, set up the docker environment:
+### Perform the DNS rebinding attack ###
+
+Our attack environment is hold in a docker image, below is some aliases we have for building the environment: 
+~~~
+$ dcbuild # docker-compose build
+$ dcup # docker-compose up
+$ dcdown # docker-compose down
+$ dockerps # docker ps --format "{{.ID}}  {{.Names}}"'
+$ dockersh <container> # docker exec -it <container> /bin/bash;
+~~~
 ~~~
 $ dcbuild
 ~~~
 ~~~
 $ dcup
 ~~~
+At this stage, when we dig the attacker's URL, it should answer with attacker's web server and nameserver.
 
-dig www.attacker733.com should answer with the attacker's web server
-dig ns.attacker733.com should answer with the attacker's nameserver
+
 
 go to google chrome -> www.attacker733.com & www.attacker733.com/change
 
@@ -49,9 +57,4 @@ dig www.attacker733.com again then we can see it answers with the IoT server!
 # so the request triggered by the attacker button will go to the IoT device
 
 
-### Some useful commands for running Docker ###
-$ dcbuild # docker-compose build
-$ dcup # docker-compose up
-$ dcdown # docker-compose down
-$ dockerps # docker ps --format "{{.ID}}  {{.Names}}"'
-$ dockersh <container> # docker exec -it <container> /bin/bash;
+
