@@ -43,7 +43,7 @@ After editing the zone file, reload the DNS server:
 rndc reload
 ~~~
 
-### Flush the cache in local DNS server###
+### Flush the cache in local DNS server ###
 Navigate to the local DNS server container:
 ~~~
 $ dockersh into local-dns-server
