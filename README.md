@@ -8,17 +8,21 @@ Many IoT devices do not have a strong protection mechanism, if attackers can
 directly interact with them, they can easily compromise these devices.
 
 
-##### Performing the DNS rebinding attack #####
-cd dns
-dcbuild
-dcup
+##### Perform the DNS rebinding attack #####
+In our repo folder, set up the docker environment:
+~~~
+$ dcbuild
+~~~
+~~~
+$ dcup
+~~~
 
 dig www.attacker733.com should answer with the attacker's web server
 dig ns.attacker733.com should answer with the attacker's nameserver
 
 go to google chrome -> www.attacker733.com & www.attacker733.com/change
 
-# We need to bypass the Same-Origin Policy protection first
+# Bypass the Same-Origin Policy protection first
 dockersh into attacker-web
 cd /app/cmpt733attacker/templates/js/
 nano change.js
